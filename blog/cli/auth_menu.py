@@ -1,5 +1,6 @@
 from services.auth_service import create_user, authenticate_user
-
+from blog.database import SessionLocal
+from blog.models.user import User
 
 def create_account():
     print("=== Create Account ===")
@@ -19,7 +20,10 @@ def login():
     print(message)
 
     if success:
-        return username  # Return the logged-in username
+        session= SessionLocal()
+        username = session.query(User).filter(User.username == username).first()
+        session.close()
+        return User  # Return the logged-in username
     return None
 
 def auth_menu():
@@ -43,3 +47,5 @@ def auth_menu():
             break
         else:
             print("Invalid option. Please try again.")
+
+    return logged_in_user  # Return the logged-in user object or None
