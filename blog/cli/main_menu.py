@@ -6,7 +6,7 @@ from blog.cli.user_menu import user_menu
 
 
 def main_menu():
-    logged_in_user = None
+    logged_in_user = auth_menu()  # Initial authentication
 
     while True:
         print("\n=== Main Menu ===")

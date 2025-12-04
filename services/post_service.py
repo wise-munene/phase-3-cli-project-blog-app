@@ -18,8 +18,10 @@ def update_post(db: Session, post_id: int, title: str = None, content: str = Non
     post = db.query(Post).filter(Post.id == post_id).first()
     if  not post:
         return False, "Post not found."
-    post.title= title 
-    post.content = content
+    if title is not None:
+        post.title= title 
+    if content is not None:
+        post.content = content
     db.commit()
     db.refresh(post)
     return True, "Post updated successfully."

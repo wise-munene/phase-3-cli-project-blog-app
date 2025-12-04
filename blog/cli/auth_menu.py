@@ -21,9 +21,9 @@ def login():
 
     if success:
         session= SessionLocal()
-        username = session.query(User).filter(User.username == username).first()
+        user_obj = session.query(User).filter(User.username == username).first()
         session.close()
-        return User  # Return the logged-in username
+        return user_obj  # Return the logged-in username
     return None
 
 def auth_menu():
