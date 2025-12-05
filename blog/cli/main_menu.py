@@ -24,13 +24,13 @@ def main_menu():
 
         elif choice == '2' :
             if logged_in_user:
-                post_menu(logged_in_user)  # Pass the logged-in user to the post menu
+                post_menu(logged_in_user.id)  # Pass the logged-in user to the post menu
             else:
                 print("You must be logged in to access the Post Menu.")
                 continue
         elif choice == '3' :
             if logged_in_user:
-                comment_menu(logged_in_user)  # Pass the logged-in user to the comment menu
+                comment_menu(logged_in_user.id)  # Pass the logged-in user to the comment menu
             else:
                 print("You must be logged in to access the Comment Menu.")
                 continue
